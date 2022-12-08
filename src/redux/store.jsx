@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension"
 import thunk from 'redux-thunk'
+import reducers from "./reducers";
 
 
 // createStore function takes two parameters. first one is reducers and the othe one is middlewares

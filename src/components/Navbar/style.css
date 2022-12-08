@@ -1,0 +1,21 @@
+nav{
+   margin-top: 30px;
+}
+nav>ul{
+   list-style: none;
+   display: flex;
+   justify-content: space-between;
+   gap: 20px;
+   align-items: center;
+   padding: 15px 10px;
+   border-bottom: 1px solid lightgray;
+}
+.plus-icon{
+   font-size: 24px;
+}
+nav>ul>li{
+   cursor: pointer;
+   font-weight: 500;
+   color: rgb(76, 73, 73);
+  
+}

@@ -1,30 +1,34 @@
-import React from "react";
-import { Container, Typography, Grow, Grid, AppBar } from "@material-ui/core";
-import PostsContainer from "../posts/postsContainer/PostsContainer";
+import React, { useEffect } from "react";
+
+
 import PostForm from "../../components/postForm/PostForm";
-import useStyles from './style'
+
+import { useDispatch } from "react-redux";
+import { getPosts } from "../../redux/middlewares/posts";
+import Navbar from "../../components/Navbar/Navbar";
+import PostsContainer from "../posts/postsContainer/PostsContainer";
+
 const Layout = () => {
-   const classes=useStyles()
+       
+        const dispatch = useDispatch();
+        useEffect(() => {
+                dispatch(getPosts());
+        }, [dispatch]);
         return (
                 <>
-                        <Container maxWidth="lg">
-                                <AppBar className={classes.appBar} position="static" color="inherit">
-                                        <Typography className={classes.heading} variant="h5">SnapBlog</Typography>
-                                </AppBar>
+                        <div className="grid grid-cols-12  max-w-6xl mx-auto">
+                              
                                 {/* app body */}
-                                <Grow in>
-                                        <Container>
-                                                <Grid container justify="space-between" alignItems="stretch" spacing={2}>
-                                                        <Grid item xs={12} sm={7}>
-                                                                <PostsContainer />
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={5}>
-                                                                <PostForm />
-                                                        </Grid>
-                                                </Grid>
-                                        </Container>
-                                </Grow>
-                        </Container>
+                                
+                                        <div className="col-span-9">
+                                                        <Navbar/>
+                                                                <PostsContainer/>
+                                        </div>
+                                        <div className="">
+                                                <PostForm/>
+                                        </div>
+                                
+                        </div>
                 </>
         );
 };

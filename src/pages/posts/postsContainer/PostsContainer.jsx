@@ -1,10 +1,11 @@
 import React from 'react';
-import useStyles from './style'
+import Post from '../post/Post';
+
 const PostsContainer = () => {
-   const classes=useStyles()
+
    return (
-      <div>
-         
+      <div className='mt-10'>
+         <Post/>
       </div>
    );
 };
