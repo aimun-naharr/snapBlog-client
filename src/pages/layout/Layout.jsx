@@ -16,15 +16,13 @@ const Layout = () => {
         }, [dispatch]);
         return (
                 <>
-                        <div className="grid grid-cols-12  max-w-6xl mx-auto">
-                              
+                        <div className="grid grid-cols-12  max-w-7xl mx-auto gap-16 mt-16">
                                 {/* app body */}
-                                
-                                        <div className="col-span-9">
-                                                        <Navbar/>
+                                        <div className="col-span-8  px-4">
+                                                        <Navbar className='w-full'/>
                                                                 <PostsContainer/>
                                         </div>
-                                        <div className="">
+                                        <div className="col-span-4 w-full">
                                                 <PostForm/>
                                         </div>
                                 

@@ -1,4 +1,4 @@
-import { CREATE_POST, LOAD_POSTS } from "../actions/posts"
+import { ADD_POST, LOAD_POSTS } from "../actions/posts"
 
 export const loadPosts=(posts)=>{
    return {
@@ -9,7 +9,7 @@ export const loadPosts=(posts)=>{
 
 export const addPost=(newPost)=>{
    return{
-      type: CREATE_POST,
+      type: ADD_POST,
       payload: newPost
    }
 }

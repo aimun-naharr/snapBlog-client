@@ -1,13 +1,12 @@
 nav{
-   margin-top: 30px;
+   
 }
 nav>ul{
    list-style: none;
    display: flex;
    justify-content: space-between;
-   gap: 20px;
-   align-items: center;
-   padding: 15px 10px;
+  
+   align-items: flex-end;
    border-bottom: 1px solid lightgray;
 }
 .plus-icon{
@@ -18,4 +17,5 @@ nav>ul>li{
    font-weight: 500;
    color: rgb(76, 73, 73);
   
+  padding: 6px 8px;
 }

@@ -1,5 +1,5 @@
 import * as api from "../../api/index";
-import { loadPosts } from "../actionCreator/posts";
+import { addPost, loadPosts } from "../actionCreator/posts";
 export const getPosts = () => {
         return async (dispatch, getState) => {
                 try {
@@ -17,10 +17,13 @@ export const getPosts = () => {
 export const createPost=(newPost)=>{
         return async(dispatch, getState)=>{
                 try {
-                        const res=await api.createPost(newPost)
-                        console.log(res)
+                        const {data}=await api.createPost(newPost)
+                        console.log(data);
+                       if(data){
+                        dispatch(addPost(data))
+                       }
                 } catch (error) {
-                        
+                        console.log(error)
                 }
         }
 }
