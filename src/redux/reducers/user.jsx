@@ -1,4 +1,4 @@
-import { GET_USER } from "../actions/Users";
+import { GET_USER, LOG_OUT } from "../actions/Users";
 
 const initialState = {
         user: {},
@@ -11,6 +11,12 @@ export const userReducer = (state = initialState, action) => {
                         return {
                                 ...state,
                                 user: action.payload,
+                        };
+                case LOG_OUT:
+                        localStorage.removeItem('user')
+                        return {
+                                ...state,
+                                user: {},
                         };
 
                 default:

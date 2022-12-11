@@ -23,7 +23,7 @@ const Signup = () => {
         const handleChange = (e) => {
                 setFormData({ ...formData, [e.target.name]: e.target.value });
         };
-        const user = localStorage.getItem("user");
+        const user = localStorage.getItem("user")?.user;
        
         const handleSubmit = (e) => {
                 e.preventDefault();
@@ -50,8 +50,16 @@ const Signup = () => {
 
                                         <TextField variant="outlined" autoFocus={true} label="Email" fullWidth name="email" type="email" required onBlur={handleChange} />
 
-                                        <div className="grid grid-cols-2 gap-2">
-                                                <TextField variant="outlined" autoFocus={true} label="Password" fullWidth name="password" type="password" required onBlur={handleChange} />
+                                        <div className="grid grid-cols-1 gap-2">
+                                                <TextField 
+                                                variant="outlined" 
+                                                autoFocus={true} 
+                                                label="Password" 
+                                                fullWidth 
+                                                name="password" 
+                                                type="password" 
+                                                required 
+                                                onBlur={handleChange} />
                                                 <TextField
                                                         variant="outlined"
                                                         autoFocus={true}

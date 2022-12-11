@@ -7,7 +7,7 @@ import { createPost } from "../../redux/middlewares/posts";
 import { ImCross } from 'react-icons/im';
 
 const PostForm = ({openPostModal, setOpenPostModal}) => {
-        console.log(openPostModal)
+       
         const dispatch = useDispatch();
         const [postsData, setPostsData] = useState({
                
@@ -37,9 +37,10 @@ const PostForm = ({openPostModal, setOpenPostModal}) => {
 
         return (
                <>{
-                openPostModal &&  <div className="mt-4 bg-zinc-200 fixed z-50 inset-0 opacity-95 w-screen overflow-hidden">
+                openPostModal &&  <div className=" bg-zinc-200 fixed z-50 inset-0 opacity-95 w-screen overflow-hidden">
                         <ImCross onClick={()=>setOpenPostModal(false)} className="absolute font-sans text-2xl right-4 top-2 cursor-pointer"/>
-                <div className="h-screen flex justify-center items-center">
+               {
+                user? <> <div className="h-screen flex justify-center items-center">
                 <div className="bg-white opacity-100 px-8 py-8 rounded">
                 <h6 className="text-xl capitialize text-center mb-4 font-medium">Share your stories✨</h6>
                 <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -87,7 +88,8 @@ const PostForm = ({openPostModal, setOpenPostModal}) => {
                         </div>
                 </form>
                 </div>
-                </div>
+                </div></>: <p className="h-screen flex justify-center items-center bg-white text-2xl">Please create a account to share your amazing stories</p>
+               }
         </div>
                }
                </>

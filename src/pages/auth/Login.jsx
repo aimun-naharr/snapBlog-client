@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import AuthBg from "../../components/AuthBg";
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch } from "react-redux";
-import { logInUser } from "../../api";
+
 import { loggedInUser } from "../../redux/middlewares/user";
 const initialValue = {
         email: "",
@@ -12,21 +12,25 @@ const initialValue = {
 
 const Login = () => {
         const [formData, setFormData] = useState(initialValue);
+        
         const dispatch=useDispatch()
         const handleChange = (e) => {
                 setFormData({ ...formData, [e.target.name]: e.target.value });
         };
         const navigate=useNavigate()
-        const user=JSON.parse(localStorage.getItem('user'))
+        
+        const user= JSON.parse(localStorage.getItem('user'))
+     
        
         const handleSubmit = (e) => {
                 e.preventDefault();
               dispatch(loggedInUser(formData))
-               if(user){
-                navigate("/home", {replace: true});
+              if(user){
+                navigate("/home");
                }
                 
         };
+       
         return (
                 <section className="grid grid-cols-12 h-screen w-screen">
                        

@@ -2,25 +2,25 @@ import React from "react";
 import { BsBookmark } from "react-icons/bs";
 import { FaBookmark } from "react-icons/fa";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
-import { BiDotsHorizontal } from "react-icons/bi";
+import { FiEdit2 } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
 
 const Post = ({post}) => {
-       const user=JSON.parse(localStorage.getItem('user')).user
-        const {name, title, selectedFile, createdAt, article, tags}=post
+       const user=JSON.parse(localStorage.getItem('user'))?.user
+        const {name, title, selectedFile, createdAt, article, tags,creator, _id}=post
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date=new Date(createdAt).toLocaleDateString(undefined, options)
       
         function shorten(string, n) {
                 return string.length > n ? string.substring(0, n-1 ) + "..." : string;
-               
                }
         return (
                 <article className="grid grid-cols-12 gap-8  border-b-2 pb-8">
                 
                                 <div className="col-span-12 ">
                                         <div className="flex items-center gap-2 ">
-                                                <img src={user?.img} alt="" className="w-8 rounded-full" />
-                                                <span className="font-medium">{name}</span>
+                                                <img src={creator?.img} alt="" className="w-8 rounded-full" />
+                                                <span className="font-medium">{creator.firstName.concat(' ', creator.lastName)}</span>
                                                 <span className="text-gray-400 font-medium">{date}</span>
                                         </div>
                                         <div className="grid grid-cols-12  items-center  gap-4">
@@ -52,12 +52,13 @@ const Post = ({post}) => {
                                         <span  title="save" className="cursor-pointer">
                                                 <BsBookmark className='text-2xl'/>
                                         </span>
-                                        <span  title="not interested" className="cursor-pointer">
-                                                <IoIosRemoveCircleOutline className='text-2xl'/>
+                                        
+                                      { (user?._id === creator._id)&& <><span onClick={()=>handleEdit(_id)}  title="Edit" className="cursor-pointer">
+                                                <FiEdit2 className='text-2xl'/>
                                         </span>
-                                        <span  title="" className="cursor-pointer">
-                                                <BiDotsHorizontal className='text-2xl'/>
-                                        </span>
+                                        <span  title="Delete post" className="cursor-pointer">
+                                                <MdDelete className='text-2xl'/>
+                                        </span></>}
                                 </div>
                         </div>
                 </article>

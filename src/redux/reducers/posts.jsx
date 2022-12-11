@@ -1,4 +1,4 @@
-import { LOAD_POSTS, ADD_POST } from "../actions/posts";
+import { LOAD_POSTS, ADD_POST, UPDATE_POST } from "../actions/posts";
 
 const initialState = {
         posts: [],
@@ -15,6 +15,11 @@ const postReducer = (state = initialState, action) => {
                         return {
                                 ...state,
                                 posts: [...state.posts, action.payload]
+                        };
+                case UPDATE_POST:
+                        return {
+                                ...state,
+                                posts:[...state.posts, state.posts.map(post=>post._id===action.payload._id? action.payload: post)]
                         };
 
                 default:
