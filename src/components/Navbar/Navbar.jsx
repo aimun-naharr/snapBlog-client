@@ -4,7 +4,7 @@ import './style.css'
 import { AiOutlinePlus } from 'react-icons/ai';
 
 const Navbar = () => {
-   console.log(menuItems)
+  
    return (
       <nav className=''>
          <ul>

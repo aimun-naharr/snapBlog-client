@@ -5,8 +5,8 @@ import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { BiDotsHorizontal } from "react-icons/bi";
 
 const Post = ({post}) => {
-        console.log(post);
-        const {creator, title, selectedFile, createdAt, article, tags}=post
+       const user=JSON.parse(localStorage.getItem('user')).user
+        const {name, title, selectedFile, createdAt, article, tags}=post
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date=new Date(createdAt).toLocaleDateString(undefined, options)
       
@@ -19,14 +19,14 @@ const Post = ({post}) => {
                 
                                 <div className="col-span-12 ">
                                         <div className="flex items-center gap-2 ">
-                                                <img src="https://i.ibb.co/ZLx08cq/random.jpg" alt="" className="w-8 rounded-full" />
-                                                <span className="font-medium">{creator}</span>
+                                                <img src={user?.img} alt="" className="w-8 rounded-full" />
+                                                <span className="font-medium">{name}</span>
                                                 <span className="text-gray-400 font-medium">{date}</span>
                                         </div>
                                         <div className="grid grid-cols-12  items-center  gap-4">
                                        <div className="col-span-9">
                                        <div>
-                                                <h2 className="text-3xl font-bold font-serif cursor-pointer">{title}</h2>
+                                                <h2 className="text-2xl font-serif font-bold font-serif cursor-pointer mt-2">{title}</h2>
                                         </div>
                                         <div>
                                                 <p className="text-gray-600 text-xl">
