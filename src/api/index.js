@@ -15,6 +15,8 @@ API.interceptors.request.use((req)=>{
 export const fetchPosts=()=>API.get('posts')
 export const createPost=(newPost)=>API.post('/posts', newPost)
 export  const updatePost=(formData, id)=>API.patch(`/posts/${id}`, formData)
+export  const deletePost=( id)=>API.patch(`/posts/${id}`)
+console.log(deletePost)
 
 // users
 export const registerUser=(formData)=>API.post(`/auth/register`, formData)

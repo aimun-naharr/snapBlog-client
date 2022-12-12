@@ -1,11 +1,23 @@
-import { LOAD_POSTS, ADD_POST, UPDATE_POST } from "../actions/posts";
+import { LOAD_POSTS, ADD_POST, UPDATE_POST, CURRENT_ID, REMOVE_CURRENT_ID, DELETE_POST } from "../actions/posts";
 
 const initialState = {
         posts: [],
+        currentId: ''
 };
 
 const postReducer = (state = initialState, action) => {
+      
         switch (action.type) {
+                case CURRENT_ID:
+                        return {
+                                ...state,
+                                currentId: action.payload
+                        };
+                case REMOVE_CURRENT_ID:
+                        return {
+                                ...state,
+                                currentId: ''
+                        };
                 case LOAD_POSTS:
                         return {
                                 ...state,
@@ -19,7 +31,12 @@ const postReducer = (state = initialState, action) => {
                 case UPDATE_POST:
                         return {
                                 ...state,
-                                posts:[...state.posts, state.posts.map(post=>post._id===action.payload._id? action.payload: post)]
+                                posts:[state.posts.map(post=>post._id===action.payload._id? action.payload: post)]
+                        };
+                case DELETE_POST:
+                        return {
+                                ...state,
+                                posts:[...state.posts.filter(post=>post._id !== action.payload)]
                         };
 
                 default:

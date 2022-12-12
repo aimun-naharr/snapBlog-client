@@ -1,5 +1,5 @@
 import * as api from "../../api/index";
-import { addPost, loadPosts, updatePostData } from "../actionCreator/posts";
+import { addPost, deletePostData, loadPosts, updatePostData } from "../actionCreator/posts";
 export const getPosts = () => {
         return async (dispatch, getState) => {
                 try {
@@ -9,7 +9,7 @@ export const getPosts = () => {
                                 dispatch(loadPosts(data));
                         }
                 } catch (error) {
-                        console.log(error.message);
+                        console.log(error);
                 }
         };
 };
@@ -18,7 +18,7 @@ export const createPost = (newPost) => {
         return async (dispatch, getState) => {
                 try {
                         const { data } = await api.createPost(newPost);
-                        console.log(data);
+                       
                         if (data) {
                                 dispatch(addPost(data));
                         }
@@ -29,10 +29,23 @@ export const createPost = (newPost) => {
 };
 
 export const updatedPostData = (newPost, id) => {
+        
         return async (dispatch, getState) => {
                 try {
-                        const {data}=api.updatePost(newPost, id)
-                        if(data) return updatePostData(data)
+                        const {data}=await api.updatePost(newPost, id)
+                       
+                        if(data){ dispatch(updatePostData(data))}
+                } catch (error) {
+                        console.log(error)
+                }
+        };
+};
+export const deletedPostData = ( id) => {
+       console.log(id)
+        return async(dispatch, getState) => {
+                try {
+                        const {data}=await api.deletePost( id)
+                        if(data){ dispatch(deletePostData(id))}
                 } catch (error) {
                         console.log(error)
                 }

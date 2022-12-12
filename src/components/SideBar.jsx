@@ -4,6 +4,7 @@ import PostForm from './postForm/PostForm';
 
 const SideBar = () => {
         const [openPostModal, setOpenPostModal]=useState(false)
+        const tags=['blockchain', 'dataScience', 'psychology', 'lifestyle', 'entertainment', 'webdevelopment']
         return (
                 <aside className='border-l-2 h-screen flex flex-col items-start w-full  hidden  md:block px-4'>
                        <div className='py-4 border-b-2'>
@@ -18,16 +19,14 @@ const SideBar = () => {
                         <div className='mr-2 mt-8'>
                                 <h1 className='text-xl mb-4'>Recommended Topics</h1>
                                 <div className='flex mt-2 flex-wrap gap-2'>
-                                        <span className='bg-gray-200 text-black rounded-full px-4 py-2'>data science</span>
-                                        <span className='bg-gray-200 text-black rounded-full px-4 py-2'>blockchain</span>
-                                        <span className='bg-gray-200 text-black rounded-full px-4 py-2'>web development</span>
-                                        <span className='bg-gray-200 text-black rounded-full px-4 py-2'>psychology</span>
-                                        <span className='bg-gray-200 text-black rounded-full px-4 py-2'>web3.0</span>
-                                        <span className='bg-gray-200 text-black rounded-full px-4 py-2'>Data science</span>
+                                        {
+                                                tags.map(tag=><span className='bg-gray-200 text-black rounded-full px-4 py-2'>{tag}</span>)
+                                        }
+                                       
                                 </div>
                         </div>
                         {
-                                <PostForm openPostModal={openPostModal} setOpenPostModal={setOpenPostModal}/>
+                          openPostModal &&   <PostForm openPostModal={openPostModal} setOpenPostModal={setOpenPostModal}/>
                         }
                 </aside>
         );
