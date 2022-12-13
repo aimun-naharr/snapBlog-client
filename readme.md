@@ -5,4 +5,4 @@
 + There is a search field which helps to find articles by tags
 
 ## Showcasing
-![alt_text]('https://snap-blog-medium.onrender.com/login')
+![alt_text] ('https://snap-blog-medium.onrender.com/login')
