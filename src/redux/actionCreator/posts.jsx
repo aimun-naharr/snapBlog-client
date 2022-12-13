@@ -1,4 +1,4 @@
-import { ADD_POST, CURRENT_ID, DELETE_POST, LOAD_POSTS, REMOVE_CURRENT_ID, UPDATE_POST } from "../actions/posts";
+import { ADD_POST, CURRENT_ID, DELETE_POST, LOAD_POSTS, REMOVE_CURRENT_ID, SEARCH_TAGS, UPDATE_POST } from "../actions/posts";
 
 export const loadPosts = (posts) => {
         return {
@@ -37,5 +37,12 @@ export const setCurrentId=(id)=>{
 export const removeCurrentId=()=>{
         return{
                 type: REMOVE_CURRENT_ID
+        }
+}
+
+export const searchByTags=(tags)=>{
+        return{
+                type: SEARCH_TAGS,
+                payload: tags
         }
 }

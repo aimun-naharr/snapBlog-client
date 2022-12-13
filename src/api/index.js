@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const API=axios.create({baseURL:"http://localhost:5000/api"})
+const API=axios.create({baseURL:"https://snapblog-server-production-3fea.up.railway.app/api"})
 
 
 API.interceptors.request.use((req)=>{
@@ -15,7 +15,7 @@ API.interceptors.request.use((req)=>{
 export const fetchPosts=()=>API.get('posts')
 export const createPost=(newPost)=>API.post('/posts', newPost)
 export  const updatePost=(formData, id)=>API.patch(`/posts/${id}`, formData)
-export  const deletePost=( id)=>API.patch(`/posts/${id}`)
+export  const deletePost=( id)=>API.delete(`/posts/${id}`)
 console.log(deletePost)
 
 // users

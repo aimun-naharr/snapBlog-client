@@ -46,8 +46,8 @@ const Login = () => {
         };
 
         return (
-                <section className="grid grid-cols-12 h-screen w-screen">
-                        <form onSubmit={handleSubmit} className="col-span-4 flex flex-col justify-center gap-2 place-items-start md:px-12 ">
+                <section className="md:grid md:grid-cols-12 md:h-screen w-screen flex flex-col-reverse ">
+                        <form onSubmit={handleSubmit} className="md:col-span-4 flex flex-col justify-center gap-2 place-items-start md:px-20 px-4  my-8 md:my-0 ">
                                 <h1 className="text-3xl font-bold font-sans uppercase">Sign in</h1>
                                 <p className="text-gray-400 font-sans mb-4">
                                         Already have an account?{" "}

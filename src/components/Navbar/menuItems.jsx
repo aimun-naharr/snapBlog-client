@@ -15,6 +15,6 @@ export const menuItems=[
       name: 'Education'
    },
    {
-      name: 'Following'
+      name: 'Saved'
    }
 ]

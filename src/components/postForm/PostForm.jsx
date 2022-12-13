@@ -36,15 +36,19 @@ const PostForm = ({ openPostModal, openUpdateModal, setOpenPostModal, setOpenUpd
 
         const handleSubmit = (e) => {
                 e.preventDefault();
+                const { article, title}=postsData
+                if(article.length==0 || title.length==0){
+                        return 
+                }
                 if (!currentId) {
                         dispatch(createPost({ ...postsData, name }));
                         setOpenPostModal(false);
                 } else {
                         dispatch(updatedPostData(postsData, currentId));
-
                         setOpenUpdateModal(false);
                 }
-                dispatch(getPosts());
+                // dispatch(getPosts());
+                // handleClear()
         };
         const handleClose = () => {
                 if (currentId) {
@@ -78,10 +82,11 @@ const PostForm = ({ openPostModal, openUpdateModal, setOpenPostModal, setOpenUpd
                                                                                         label="Tags"
                                                                                         name="tags"
                                                                                         value={postsData.tags}
-                                                                                        onChange={(e) => setPostsData({ ...postsData, tags: e.target.value })}
+                                                                                        onChange={(e) => setPostsData({ ...postsData, tags: e.target.value.toLocaleLowerCase() })}
                                                                                         placeholder="Tags"
                                                                                         className="px-4 text-base py-2"
                                                                                 />
+                                                                                
                                                                                 <textarea
                                                                                         label="Article"
                                                                                         variant="outlined"

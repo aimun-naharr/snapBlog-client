@@ -33,7 +33,7 @@ const Post = ({ post }) => {
                 dispatch(deletedPostData(id));
         };
         return (
-                <article className="grid grid-cols-12 gap-8  border-b-2 pb-8">
+                <article className="grid grid-cols-12 gap-8  border-b-2 pb-8 px-4 md:px-0">
                         <div className="col-span-12 ">
                                 <div className="flex items-center gap-2 ">
                                         <img src={creator?.img} alt="" className="w-8 rounded-full" />

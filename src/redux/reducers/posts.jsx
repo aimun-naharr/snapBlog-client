@@ -1,8 +1,9 @@
-import { LOAD_POSTS, ADD_POST, UPDATE_POST, CURRENT_ID, REMOVE_CURRENT_ID, DELETE_POST } from "../actions/posts";
+import { LOAD_POSTS, ADD_POST, UPDATE_POST, CURRENT_ID, REMOVE_CURRENT_ID, DELETE_POST, SEARCH_TAGS } from "../actions/posts";
 
 const initialState = {
         posts: [],
-        currentId: ''
+        currentId: '',
+        searchByTags: ''
 };
 
 const postReducer = (state = initialState, action) => {
@@ -31,13 +32,19 @@ const postReducer = (state = initialState, action) => {
                 case UPDATE_POST:
                         return {
                                 ...state,
-                                posts:[state.posts.map(post=>post._id===action.payload._id? action.payload: post)]
+                                posts:[...state.posts.map(post=>post._id===action.payload._id? action.payload: post)]
                         };
                 case DELETE_POST:
                         return {
                                 ...state,
                                 posts:[...state.posts.filter(post=>post._id !== action.payload)]
                         };
+
+                        case SEARCH_TAGS:
+                                return {
+                                        ...state,
+                                        searchByTags: action.payload
+                                }
 
                 default:
                         return state;
