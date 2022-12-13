@@ -2,7 +2,7 @@ import React from "react";
 import AuthBg from "../../components/AuthBg";
 import { TextField } from "@material-ui/core";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "../../redux/middlewares/user";
 import {  useLocation, useNavigate, Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Signup = () => {
         const [formData, setFormData] = useState(initialValue);
         const dispatch = useDispatch();
         const location=useLocation()
-        
+        const newUser=useSelector(state=>state.user.user)
         const navigate=useNavigate()
         const handleChange = (e) => {
                 setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,9 +28,9 @@ const Signup = () => {
         const handleSubmit = (e) => {
                 e.preventDefault();
                 dispatch(getUserData(formData));
-               if(user){
+              
                 navigate("/login");
-               }
+             
                 
         };
        

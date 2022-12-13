@@ -2,7 +2,7 @@ import { TextField } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import AuthBg from "../../components/AuthBg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { loggedInUser } from "../../redux/middlewares/user";
 const initialValue = {
@@ -12,37 +12,35 @@ const initialValue = {
 
 const Login = () => {
         const [formData, setFormData] = useState(initialValue);
-        const [user, setUser]=useState('')
-        console.log(user)
+        const [user, setUser]=useState( JSON.parse(localStorage.getItem("user")))
+        const newUser=useSelector(state=>state.user.user)
+       
+        console.log(newUser);
         const location = useLocation();
         const navigate = useNavigate();
         let from = location.state?.from?.pathname || "/home";
         
-        console.log(user)
-        // if (user) {
-        //         navigate(from, { replace: true });
-        // }
-        const getUser=async()=>{
-                const user =await JSON.parse(localStorage.getItem("user"))?.token;
-                setUser(user)
-        }
+       
         const dispatch = useDispatch();
         const handleChange = (e) => {
                 setFormData({ ...formData, [e.target.name]: e.target.value });
         };
-         if (user) {
+        useEffect(()=>{
+                if (user) {
                         navigate(from, { replace: true });
+                        setUser(user.token)
                 }
-        useEffect(() => {
-               
-                const user =JSON.parse(localStorage.getItem("user"))?.token;
-                setUser(user)
-        }, [user]);
-
-        const handleSubmit = (e) => {
-                e.preventDefault();
-                dispatch(loggedInUser(formData));
+        },[])
         
+
+        const handleSubmit = async(e) => {
+                e.preventDefault();
+               
+                dispatch(loggedInUser(formData));
+             
+                navigate('/home')
+             
+      
         };
 
         return (

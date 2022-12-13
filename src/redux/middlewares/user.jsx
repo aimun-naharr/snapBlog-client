@@ -18,6 +18,7 @@ export const loggedInUser=(formData)=>{
         return async(dispatch, getState)=>{
                 try {
                         const {data}=await logInUser(formData)
+                       
                         if(data){
                                 dispatch(getUser(data))
                         }

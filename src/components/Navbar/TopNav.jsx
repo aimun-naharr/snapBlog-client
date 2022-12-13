@@ -15,7 +15,7 @@ const TopNav = () => {
 
         const dispatch=useDispatch()
         return (
-                <nav className='flex w-full  items-start justify-between px-4 mb-4'>
+                <nav className='flex w-full  items-center justify-between px-4 mb-4'>
                         <div className='flex items-center gap-4'>
                                 <h1 className='text-2xl font-medium text-black'>Snap<span className='text-4xl font-bold text-cyan-500'>B</span>log</h1>
                                 <div className="flex border-b-2 border-cyan-500 items-center px-4 gap-2">

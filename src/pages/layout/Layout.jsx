@@ -17,9 +17,13 @@ const Layout = () => {
        if(!user){
         navigate("/login");
        }
+       if(user){
+        navigate('/home')
+       }
         const dispatch = useDispatch();
         useEffect(() => {
                 dispatch(getPosts());
+              
         }, [dispatch]);
         return (
                 <>
