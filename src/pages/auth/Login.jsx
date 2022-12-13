@@ -37,10 +37,8 @@ const Login = () => {
                 e.preventDefault();
                
                 dispatch(loggedInUser(formData));
-             
+
                 navigate('/home')
-             
-      
         };
 
         return (
