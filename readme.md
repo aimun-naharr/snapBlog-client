@@ -5,4 +5,4 @@
 + There is a search field which helps to find articles by tags
 
 ## Showcasing
-![Alt text](imgages/pic1)
+![Alt text](./images/pic1.png)
