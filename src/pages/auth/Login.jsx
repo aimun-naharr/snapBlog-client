@@ -12,10 +12,11 @@ const initialValue = {
 
 const Login = () => {
         const [formData, setFormData] = useState(initialValue);
-        const [user, setUser]=useState( JSON.parse(localStorage.getItem("user")))
-        const newUser=useSelector(state=>state.user.user)
+      
+        const user=useSelector(state=>state.user)
+      
        
-        console.log(newUser);
+     
         const location = useLocation();
         const navigate = useNavigate();
         let from = location.state?.from?.pathname || "/home";
@@ -25,20 +26,17 @@ const Login = () => {
         const handleChange = (e) => {
                 setFormData({ ...formData, [e.target.name]: e.target.value });
         };
-        useEffect(()=>{
-                if (user) {
-                        navigate(from, { replace: true });
-                        setUser(user.token)
-                }
-        },[])
+        // useEffect(()=>{
+        //         if (user) {
+        //                 navigate(from, { replace: true });
+        //                 setUser(user.token)
+        //         }
+        // },[])
         
 
         const handleSubmit = async(e) => {
                 e.preventDefault();
-               
-                dispatch(loggedInUser(formData));
-
-                navigate('/home')
+                dispatch(loggedInUser(formData, navigate));
         };
 
         return (
@@ -51,11 +49,16 @@ const Login = () => {
                                                 Sign up
                                         </Link>
                                 </p>
+                                {
+                                        user.error? <p className="text-center  w-full bg-red-200 py-2 mb-4 text-red-500 font-bold">{user.error}</p> : ''
+                                }
                                 <div className="grid grid-cols-1 gap-4 w-full">
                                         <TextField variant="outlined" autoFocus={true} label="Email" fullWidth name="email" type="email" required onBlur={handleChange} />
                                         <TextField variant="outlined" autoFocus={true} label="Password" fullWidth name="password" type="password" required onBlur={handleChange} />
                                         <button type="submit" className="w-full rounded-full bg-indigo-500 font-sans text-white py-4 mt-4 uppercase ">
-                                                Sign In
+                                             {
+                                                user.isLoading? 'Please wait......' : 'Sign In'
+                                             }
                                         </button>
                                 </div>
                         </form>

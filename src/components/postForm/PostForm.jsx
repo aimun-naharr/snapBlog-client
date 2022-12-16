@@ -36,9 +36,9 @@ const PostForm = ({ openPostModal, openUpdateModal, setOpenPostModal, setOpenUpd
 
         const handleSubmit = (e) => {
                 e.preventDefault();
-                const { article, title}=postsData
-                if(article.length==0 || title.length==0){
-                        return 
+                const { article, title } = postsData;
+                if (article.length == 0 || title.length == 0) {
+                        return;
                 }
                 if (!currentId) {
                         dispatch(createPost({ ...postsData, name }));
@@ -62,14 +62,12 @@ const PostForm = ({ openPostModal, openUpdateModal, setOpenPostModal, setOpenUpd
                 <>
                         {(openPostModal || openUpdateModal) && (
                                 <div className=" bg-zinc-200 fixed z-50 inset-0 opacity-95 w-screen overflow-hidden">
-                                        
                                         {user ? (
                                                 <>
                                                         {" "}
                                                         <div className="h-screen flex justify-center items-center ">
-                                                       
                                                                 <div className="bg-white opacity-100 px-8 py-8 rounded relative">
-                                                                <ImCross onClick={handleClose} className="absolute font-sans text-xs right-4 top-4 cursor-pointer" />
+                                                                        <ImCross onClick={handleClose} className="absolute font-sans text-xs right-4 top-4 cursor-pointer" />
                                                                         <h6 className="text-xl capitialize text-center mb-4 font-medium">{currentId ? "Update" : "Share"} your stories✨</h6>
                                                                         <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4">
                                                                                 <input
@@ -88,7 +86,7 @@ const PostForm = ({ openPostModal, openUpdateModal, setOpenPostModal, setOpenUpd
                                                                                         placeholder="Tags"
                                                                                         className="px-4 text-base py-2"
                                                                                 />
-                                                                                
+
                                                                                 <textarea
                                                                                         label="Article"
                                                                                         variant="outlined"

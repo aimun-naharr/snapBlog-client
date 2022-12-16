@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { logOut } from '../redux/actionCreator/user';
 const RightProfile = ({setOpenRightProfile}) => {
         const user=JSON.parse(localStorage.getItem('user'))?.user
+      
         const dispatch=useDispatch()
         const navigate=useNavigate()
         const handleSignOut=()=>{

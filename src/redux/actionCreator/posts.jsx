@@ -20,29 +20,29 @@ export const updatePostData = (updatedPost) => {
         };
 };
 export const deletePostData = (data) => {
-        console.log(data)
+        console.log(data);
         return {
                 type: DELETE_POST,
-                payload: data
+                payload: data,
         };
 };
 
-export const setCurrentId=(id)=>{
-   return{
-      type: CURRENT_ID,
-      payload: id
-   }
-}
+export const setCurrentId = (id) => {
+        return {
+                type: CURRENT_ID,
+                payload: id,
+        };
+};
 
-export const removeCurrentId=()=>{
-        return{
-                type: REMOVE_CURRENT_ID
-        }
-}
+export const removeCurrentId = () => {
+        return {
+                type: REMOVE_CURRENT_ID,
+        };
+};
 
-export const searchByTags=(tags)=>{
-        return{
+export const searchByTags = (tags) => {
+        return {
                 type: SEARCH_TAGS,
-                payload: tags
-        }
-}
+                payload: tags,
+        };
+};
