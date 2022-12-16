@@ -13,11 +13,7 @@ function App() {
  
   return (
     <div className="relative">
-      {/* provider allows the accessibility of store for it's child components */}
-      
-    <Provider store={store}>
-      <RouterProvider router={routes}/>
-      </Provider>
+    
     </div>
   )
 }
