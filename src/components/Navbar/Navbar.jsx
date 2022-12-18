@@ -6,7 +6,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 const Navbar = () => {
   
    return (
-      <nav className=''>
+      <nav className='overflow-x-auto width-[80%] md:width-[100%]'>
          <ul>
             <li className='plus-icon'>+</li>
            {

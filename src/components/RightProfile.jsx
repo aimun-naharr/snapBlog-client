@@ -13,7 +13,7 @@ const RightProfile = ({setOpenRightProfile}) => {
 navigate('/login')
         }
         return (
-                <div className='fixed pt-12 w-96 right-0 bg-white h-screen z-50 opacity-95  top-0 transition-all ease-in-out delay-150'>
+                <div className='fixed pt-12 w-full md:w-96 right-0 bg-white h-screen z-50 opacity-95  top-0 transition-all ease-in-out delay-150'>
                          <ImCross onClick={()=>setOpenRightProfile(false)} className="absolute font-sans text-xl right-4 top-8 cursor-pointer"/>
                       <div className='flex items-center flex-col mt-12'>
                         <img className='w-14 h-14 rounded-full' src={user?.img} alt="" />

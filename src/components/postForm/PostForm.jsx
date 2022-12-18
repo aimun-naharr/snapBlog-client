@@ -61,12 +61,12 @@ const PostForm = ({ openPostModal, openUpdateModal, setOpenPostModal, setOpenUpd
         return (
                 <>
                         {(openPostModal || openUpdateModal) && (
-                                <div className=" bg-zinc-200 fixed z-50 inset-0 opacity-95 w-screen overflow-hidden">
+                                <div className=" bg-zinc-200 fixed z-50 inset-0 opacity-95 w-full overflow-hidden">
                                         {user ? (
                                                 <>
                                                         {" "}
                                                         <div className="h-screen flex justify-center items-center ">
-                                                                <div className="bg-white opacity-100 px-8 py-8 rounded relative">
+                                                                <div className="bg-white opacity-100 px-8 py-8 rounded relative w-[80%] md:w-[50%] max-w-[500px] max-h-screen flex flex-col mt-4 mb-4 justify-center">
                                                                         <ImCross onClick={handleClose} className="absolute font-sans text-xs right-4 top-4 cursor-pointer" />
                                                                         <h6 className="text-xl capitialize text-center mb-4 font-medium">{currentId ? "Update" : "Share"} your stories✨</h6>
                                                                         <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4">
