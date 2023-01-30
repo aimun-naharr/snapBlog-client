@@ -12,7 +12,8 @@ export const getUserData = (formData, navigate) => {
                         navigate('/home')
                 }
                } catch(error){
-                dispatch({type: 'REJECTED', payload: error.response.data.msg})
+                
+                dispatch({type: 'REJECTED', payload: error.response?.data.msg})
               
                }
         };
@@ -29,6 +30,7 @@ export const loggedInUser=(formData, navigate)=>{
                                 navigate('/home')
                         }
                 } catch (error) {
+                        
                         dispatch({type: 'REJECTED',  payload: error.response.data.msg})
                       
                 }

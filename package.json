@@ -1,7 +1,7 @@
 {
   "name": "snapblog-client",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "https://snapblog-server-production-3fea.up.railway.app/api",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

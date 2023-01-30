@@ -8,7 +8,6 @@ const initialState = {
 };
 
 export const userReducer = (state = initialState, action) => {
-        console.log(action.type)
         switch (action.type) {
                 case GET_USER:
                         localStorage.setItem('user', JSON.stringify({...action.payload}))
